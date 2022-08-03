@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Dish App</string>
+    <string name="title_add_dish">Add Dish</string>
+    <string name="title_edit_dish">Edit Dish</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_type">Type</string>
+    <string name="hint_category">Category</string>
+    <string name="hint_ingredients">Ingredients</string>
+    <string name="hint_cooking_time_in_minutes">Cooking time in minutes</string>
+    <string name="hint_direction_to_cook">Direction to cook</string>
+    <string name="select_image">Select Image</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <string name="no_dishes_added_yet">No Dishes Added Yet..</string>
+    <string name="no_favorite_dishes_yet">No Favorite Dishes Yet..</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="online">Online</string>
+    <string name="filter_dishes">Filter</string>
+    <string name="cooking_time">The approx. time required to cook the dish is %1$s minutes.</string>
+    <string name="you_are_offline">You are offline!!!</string>
+
+
+    <!--   pop up menu-->
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="update_dish">Update</string>
+
+    <!--    Alert dialog message -->
+    <string name="alert_dialog_message">Are you sure you want to delete %1$s ?</string>
+    <string name="alert_yes">Yes</string>
+    <string name="alert_no">No</string>
+
+
+    <!-- Notifications -->
+    <string name="notification_title">Checkout new Dish recipes..</string>
+    <string name="notification_subtitle">Tap for more details.</string>
+
+
+</resources>

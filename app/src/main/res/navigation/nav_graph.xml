@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/all_dishes_fragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/all_dishes_fragment"
+        android:name="com.example.dishapp.views.fragments.AllDishesFragment"
+        tools:layout="@layout/fragment_all_dishes"
+        >
+        <action
+            android:id="@+id/all_dishes_to_dish_details"
+            app:destination="@id/dish_details_fragment"
+            />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/favorite_dishes_fragment"
+        android:name="com.example.dishapp.views.fragments.FavoriteDishFragment"
+        tools:layout="@layout/fragment_favorite_dish"
+        >
+
+        <action
+            android:id="@+id/favorite_dish_to_dish_details"
+            app:destination="@id/dish_details_fragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/random_dishes_fragment"
+        android:name="com.example.dishapp.views.fragments.RandomDishFragment"
+        tools:layout="@layout/fragment_random_dish"
+        />
+
+    <fragment
+        android:id="@+id/dish_details_fragment"
+        android:name="com.example.dishapp.views.fragments.DishDetailsFragment"
+        tools:layout="@layout/fragment_dish_details"
+        >
+
+        <argument
+            android:name="dish_details"
+            app:argType="com.example.dishapp.model.entities.DishEntity"
+            />
+    </fragment>
+
+</navigation>
