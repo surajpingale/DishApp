@@ -15,7 +15,8 @@ DishApp allows to user to save dish recipe in local database and fetch random re
 * Navigation Component
 * Diff Utils
 * RxJava
-
+* Notifications
+* Work Manager
 <!-- ## Screenshots -->
 
 
