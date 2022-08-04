@@ -6,6 +6,7 @@ DishApp allows to user to save dish recipe in local database and fetch random re
 ## Technologies
 
 * Kotlin
+* ViewBinding
 * Room
 * Retrofit
 * Coroutines
@@ -18,6 +19,7 @@ DishApp allows to user to save dish recipe in local database and fetch random re
 * RxJava
 * Notifications
 * Work Manager
+* Broadcast Listener
 <!-- ## Screenshots -->
 
 
