@@ -8,6 +8,7 @@ DishApp allows to user to save dish recipe in local database and fetch random re
 * Kotlin
 * Room
 * Retrofit
+* Coroutines
 * Glide
 * Recycler View
 * MVVM
