@@ -24,7 +24,7 @@ object Constants {
     const val TAGS = "tags"
     const val NUMBER = "number"
 
-    const val API_KEY_VALUE = ""
+    const val API_KEY_VALUE = "ad4c6ccf6b084befa04e1abb56707e42"
     const val LIMIT_LICENSE_VALUE = true
     const val TAGS_VALUE = "vegetarian"
     const val NUMBER_VALUE = 1
@@ -36,5 +36,9 @@ object Constants {
     const val NOTIFICATION_ID = "DishNotificationId"
     const val NOTIFICATION_NAME = "Dish"
     const val NOTIFICATION_CHANNEL = "DishNotificationChannel"
+
+    // Database const
+    const val DATABASE_NAME = "dish_db"
+
 
 }

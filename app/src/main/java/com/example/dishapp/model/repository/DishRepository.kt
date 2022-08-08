@@ -8,8 +8,9 @@ import com.example.dishapp.model.entities.DishEntity
 import com.example.dishapp.utils.Constants
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Response
+import javax.inject.Inject
 
-class DishRepository(
+class DishRepository @Inject constructor(
     private val dishDao: DishDao,
     private val apiInterface: ApiInterface
 ) {
