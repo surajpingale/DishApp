@@ -22,6 +22,7 @@ import com.example.dishapp.application.DishApplication
 import com.example.dishapp.model.entities.DishEntity
 import com.example.dishapp.utils.Constants
 import com.example.dishapp.viewmodel.DishViewModelFactory
+import javax.inject.Inject
 
 class AddActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -35,8 +36,11 @@ class AddActivity : AppCompatActivity(), View.OnClickListener {
     private var favoriteDish = false
     private var dishDetails: DishEntity? = null
 
-    private val dishViewModel: DishViewModel by viewModels {
-        DishViewModelFactory((application as DishApplication).dishRepository)
+    @Inject
+    lateinit var dishViewModelFactory: DishViewModelFactory
+
+    private val dishViewModel: DishViewModel by viewModels{
+        dishViewModelFactory
     }
 
     private val getImageFromGallery =

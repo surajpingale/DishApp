@@ -1,18 +1,26 @@
-package com.example.dishapp.network
+package com.example.dishapp.di
 
+import com.example.dishapp.network.ApiInterface
 import com.example.dishapp.utils.Constants
+import dagger.Module
+import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-object Network {
+@Module
+class NetworkModule {
 
     private val interceptor =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    private fun getInstance(): Retrofit {
+    @Provides
+    @Singleton
+    fun getRetrofit():Retrofit
+    {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -21,7 +29,11 @@ object Network {
             .build()
     }
 
-    fun getRetrofit() : ApiInterface {
-        return getInstance().create(ApiInterface::class.java)
+    @Provides
+    @Singleton
+    fun getRetrofitApi(retrofit: Retrofit) : ApiInterface
+    {
+        return retrofit.create(ApiInterface::class.java)
     }
+
 }

@@ -15,14 +15,12 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun getDatabaseInstance(context : Context) : DishDatabase {
-
         return Room.databaseBuilder(
             context,
             DishDatabase::class.java,
             Constants.DATABASE_NAME
         )
             .fallbackToDestructiveMigration().build()
-
     }
 
 }

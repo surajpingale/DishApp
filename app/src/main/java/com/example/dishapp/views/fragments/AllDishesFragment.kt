@@ -13,7 +13,6 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dishapp.R
-import com.example.dishapp.application.DishApplication
 import com.example.dishapp.databinding.FragmentAllDishesBinding
 import com.example.dishapp.interfaces.CustomToolbar
 import com.example.dishapp.model.entities.DishEntity
@@ -24,6 +23,7 @@ import com.example.dishapp.views.activities.AddActivity
 import com.example.dishapp.views.activities.MainActivity
 import com.example.dishapp.views.adapters.DishAdapter
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 
 class AllDishesFragment : Fragment(), DishAdapter.DishClickListener {
@@ -33,8 +33,11 @@ class AllDishesFragment : Fragment(), DishAdapter.DishClickListener {
     private lateinit var dishesList: List<DishEntity>
     private lateinit var dishAdapter: DishAdapter
 
+    @Inject
+    lateinit var dishViewModelFactory: DishViewModelFactory
+
     private val viewModel: DishViewModel by viewModels {
-        DishViewModelFactory((requireActivity().application as DishApplication).dishRepository)
+        dishViewModelFactory
     }
 
     override fun onCreateView(
@@ -78,9 +81,7 @@ class AllDishesFragment : Fragment(), DishAdapter.DishClickListener {
      */
     private fun updateRecyclerView() {
         val recyclerView = binding.recyclerView
-
         dishAdapter = DishAdapter(this, dishesList, this)
-
 
         postponeEnterTransition(300, TimeUnit.MILLISECONDS)
         recyclerView.doOnPreDraw {
@@ -90,7 +91,6 @@ class AllDishesFragment : Fragment(), DishAdapter.DishClickListener {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(requireActivity(), 2)
             adapter = dishAdapter
-
         }
     }
 

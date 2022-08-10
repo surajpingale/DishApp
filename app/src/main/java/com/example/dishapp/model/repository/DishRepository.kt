@@ -1,38 +1,37 @@
 package com.example.dishapp.model.repository
 
 import androidx.lifecycle.LiveData
-import com.example.dishapp.network.ApiInterface
-import com.example.dishapp.model.entities.randomDish.Recipe
-import com.example.dishapp.model.database.DishDao
+import com.example.dishapp.model.database.DishDatabase
 import com.example.dishapp.model.entities.DishEntity
+import com.example.dishapp.model.entities.randomDish.Recipe
+import com.example.dishapp.network.ApiInterface
 import com.example.dishapp.utils.Constants
 import io.reactivex.rxjava3.core.Observable
-import retrofit2.Response
 import javax.inject.Inject
 
 class DishRepository @Inject constructor(
-    private val dishDao: DishDao,
+    private val dishDatabase: DishDatabase,
     private val apiInterface: ApiInterface
 ) {
 
     suspend fun insertDish(dishEntity: DishEntity) {
-        dishDao.insertDish(dishEntity)
+        dishDatabase.dishDao().insertDish(dishEntity)
     }
 
     fun getAllDishes(): LiveData<List<DishEntity>> {
-        return dishDao.getAllDishes()
+        return dishDatabase.dishDao().getAllDishes()
     }
 
     fun favorites(): LiveData<List<DishEntity>> {
-        return dishDao.getFavoriteDishes()
+        return dishDatabase.dishDao().getFavoriteDishes()
     }
 
     suspend fun deleteDish(dish: DishEntity) {
-        return dishDao.deleteDish(dish)
+        return dishDatabase.dishDao().deleteDish(dish)
     }
 
     suspend fun updateDish(dish: DishEntity) {
-        return dishDao.updateDish(dish)
+        return dishDatabase.dishDao().updateDish(dish)
     }
 
     fun getRandomDish(): Observable<Recipe> {

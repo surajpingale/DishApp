@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.dishapp.R
-import com.example.dishapp.application.DishApplication
 import com.example.dishapp.databinding.FragmentRandomDishBinding
 import com.example.dishapp.interfaces.CustomToolbar
 import com.example.dishapp.model.entities.DishEntity
@@ -25,6 +24,7 @@ import com.example.dishapp.viewmodel.DishViewModel
 import com.example.dishapp.viewmodel.DishViewModelFactory
 import com.example.dishapp.viewmodel.RandomDishViewModel
 import com.example.dishapp.viewmodel.RandomDishViewModelFactory
+import javax.inject.Inject
 
 
 class RandomDishFragment : Fragment(), InternetAvailability.InternetListener {
@@ -36,18 +36,18 @@ class RandomDishFragment : Fragment(), InternetAvailability.InternetListener {
     private var isNetAvailable: Boolean? = null
     private var alreadyLoaded = false
 
+    @Inject
+    lateinit var dishViewModelFactory: DishViewModelFactory
+
+    @Inject
+    lateinit var randomDishViewModelFactory: RandomDishViewModelFactory
+
     private val dishViewModel: DishViewModel by viewModels {
-        DishViewModelFactory(
-            (requireActivity().application as
-                    DishApplication).dishRepository
-        )
+        dishViewModelFactory
     }
 
     private val viewModel: RandomDishViewModel by viewModels {
-        RandomDishViewModelFactory(
-            (requireActivity().application
-                    as DishApplication).dishRepository
-        )
+        randomDishViewModelFactory
     }
 
     override fun onCreateView(
