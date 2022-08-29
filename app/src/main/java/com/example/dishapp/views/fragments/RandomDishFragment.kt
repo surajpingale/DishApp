@@ -1,5 +1,6 @@
 package com.example.dishapp.views.fragments
 
+import android.content.Context
 import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
@@ -24,6 +25,7 @@ import com.example.dishapp.viewmodel.DishViewModel
 import com.example.dishapp.viewmodel.DishViewModelFactory
 import com.example.dishapp.viewmodel.RandomDishViewModel
 import com.example.dishapp.viewmodel.RandomDishViewModelFactory
+import com.example.dishapp.views.activities.MainActivity
 import javax.inject.Inject
 
 
@@ -48,6 +50,12 @@ class RandomDishFragment : Fragment(), InternetAvailability.InternetListener {
 
     private val viewModel: RandomDishViewModel by viewModels {
         randomDishViewModelFactory
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity() as MainActivity).activityComponent
+            .inject(this)
     }
 
     override fun onCreateView(
@@ -231,10 +239,17 @@ class RandomDishFragment : Fragment(), InternetAvailability.InternetListener {
                 dishEntity.cookingTime = cookingTime
                 dishEntity.directionToCook = directionToCook
                 dishEntity.favoriteDish = true
+                favoriteDish = true
+                viewModel.setFavoriteDish(favoriteDish)
 
                 dishViewModel.insert(dishEntity)
                 Toast.makeText(requireActivity(), "Downloaded", Toast.LENGTH_SHORT)
                     .show()
+                binding.ivFavorite.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireActivity(), R.drawable.ic_favorite
+                    )
+                )
             } else {
                 Toast.makeText(
                     requireActivity(),
@@ -244,14 +259,22 @@ class RandomDishFragment : Fragment(), InternetAvailability.InternetListener {
                     .show()
             }
 
-            if (!favoriteDish) {
-                favoriteDish = true
-                binding.ivFavorite.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireActivity(), R.drawable.ic_favorite
-                    )
+        }
+
+        if (viewModel.getFavoriteDish()) {
+            binding.ivFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireActivity(), R.drawable.ic_favorite
                 )
-            }
+            )
+        }
+        else
+        {
+            binding.ivFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireActivity(), R.drawable.ic_favorite_with_line
+                )
+            )
         }
     }
 

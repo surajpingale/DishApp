@@ -12,6 +12,7 @@ import androidx.work.*
 import com.example.dishapp.R
 import com.example.dishapp.application.DishApplication
 import com.example.dishapp.databinding.ActivityMainBinding
+import com.example.dishapp.di.ActivityComponent
 import com.example.dishapp.interfaces.CustomToolbar
 import com.example.dishapp.notification.NotificationWorker
 import com.example.dishapp.utils.Constants
@@ -21,12 +22,17 @@ class MainActivity : AppCompatActivity(), CustomToolbar {
 
     private lateinit var binding: ActivityMainBinding
 
+    lateinit var activityComponent: ActivityComponent
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        activityComponent = (application as DishApplication)
+            .applicationComponent.activityComponent().create()
+        activityComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        (application as DishApplication).applicationComponent.inject(this)
+
 
         settingBottomNavBar()
 

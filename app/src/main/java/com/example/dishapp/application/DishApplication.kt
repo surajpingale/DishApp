@@ -3,8 +3,6 @@ package com.example.dishapp.application
 import android.app.Application
 import com.example.dishapp.di.ApplicationComponent
 import com.example.dishapp.di.DaggerApplicationComponent
-import com.example.dishapp.model.database.DishDatabase
-import com.example.dishapp.model.repository.DishRepository
 
 class DishApplication : Application() {
 

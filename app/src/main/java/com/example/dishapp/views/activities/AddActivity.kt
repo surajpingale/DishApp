@@ -50,6 +50,11 @@ class AddActivity : AppCompatActivity(), View.OnClickListener {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val appComponent = (application as DishApplication).applicationComponent
+            .activityComponent().create()
+
+        appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)

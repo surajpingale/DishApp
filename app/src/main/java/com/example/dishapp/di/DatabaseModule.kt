@@ -2,7 +2,6 @@ package com.example.dishapp.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.dishapp.model.database.DishDatabase
 import com.example.dishapp.utils.Constants
 import dagger.Module

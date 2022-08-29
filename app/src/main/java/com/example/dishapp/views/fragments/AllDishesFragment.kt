@@ -1,6 +1,7 @@
 package com.example.dishapp.views.fragments
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,8 +23,10 @@ import com.example.dishapp.viewmodel.DishViewModelFactory
 import com.example.dishapp.views.activities.AddActivity
 import com.example.dishapp.views.activities.MainActivity
 import com.example.dishapp.views.adapters.DishAdapter
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 
 class AllDishesFragment : Fragment(), DishAdapter.DishClickListener {
@@ -38,6 +41,11 @@ class AllDishesFragment : Fragment(), DishAdapter.DishClickListener {
 
     private val viewModel: DishViewModel by viewModels {
         dishViewModelFactory
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity() as MainActivity).activityComponent.inject(this)
     }
 
     override fun onCreateView(

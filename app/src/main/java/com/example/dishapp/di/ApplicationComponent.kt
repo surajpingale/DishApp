@@ -1,17 +1,15 @@
 package com.example.dishapp.di
 
 import android.content.Context
-import com.example.dishapp.views.activities.AddActivity
-import com.example.dishapp.views.activities.MainActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [DatabaseModule::class, NetworkModule::class])
+@Component(modules = [DatabaseModule::class, NetworkModule::class, Subcomponents::class])
 interface ApplicationComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun activityComponent(): ActivityComponent.Factory
 
     @Component.Factory
     interface Factory {

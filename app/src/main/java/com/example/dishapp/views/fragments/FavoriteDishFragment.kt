@@ -1,5 +1,6 @@
 package com.example.dishapp.views.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,11 @@ class FavoriteDishFragment : Fragment(), DishAdapter.DishClickListener {
 
     private val viewModel: DishViewModel by viewModels{
         dishViewModelFactory
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity() as MainActivity).activityComponent.inject(this)
     }
 
     override fun onCreateView(

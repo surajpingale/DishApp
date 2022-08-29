@@ -3,7 +3,6 @@ package com.example.dishapp.network
 import com.example.dishapp.model.entities.randomDish.Recipe
 import com.example.dishapp.utils.Constants
 import io.reactivex.rxjava3.core.Observable
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 

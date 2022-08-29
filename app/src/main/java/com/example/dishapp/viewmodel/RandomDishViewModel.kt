@@ -19,6 +19,10 @@ class RandomDishViewModel @Inject constructor(private val dishRepository: DishRe
 
     var mutableData = MutableLiveData<Response<Recipe>>()
 
+    private var isFavorite = false
+
+
+
 
     fun getRandomDish() {
 
@@ -48,5 +52,17 @@ class RandomDishViewModel @Inject constructor(private val dishRepository: DishRe
     private fun onFailure(t: Throwable) {
         mutableData.postValue(Response.Error(t.toString()))
     }
+
+    fun setFavoriteDish(favorite:Boolean)
+    {
+        this.isFavorite = favorite
+    }
+
+    fun getFavoriteDish() : Boolean
+    {
+        return isFavorite
+    }
+
+
 
 }

@@ -9,7 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DishViewModel @Inject constructor(private val dishRepository: DishRepository) : ViewModel() {
+class DishViewModel @Inject constructor(
+    private val dishRepository: DishRepository
+) : ViewModel() {
 
     fun insert(dishEntity: DishEntity) {
         CoroutineScope(Dispatchers.IO).launch {
