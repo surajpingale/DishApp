@@ -12,7 +12,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 
-class RandomDishViewModel @Inject constructor(private val dishRepository: DishRepository) : ViewModel() {
+class RandomDishViewModel @Inject constructor(
+    private val dishRepository: DishRepository
+) : ViewModel() {
 
 
     private val disposable = CompositeDisposable()
@@ -20,9 +22,6 @@ class RandomDishViewModel @Inject constructor(private val dishRepository: DishRe
     var mutableData = MutableLiveData<Response<Recipe>>()
 
     private var isFavorite = false
-
-
-
 
     fun getRandomDish() {
 
@@ -53,16 +52,11 @@ class RandomDishViewModel @Inject constructor(private val dishRepository: DishRe
         mutableData.postValue(Response.Error(t.toString()))
     }
 
-    fun setFavoriteDish(favorite:Boolean)
-    {
+    fun setFavoriteDish(favorite: Boolean) {
         this.isFavorite = favorite
     }
 
-    fun getFavoriteDish() : Boolean
-    {
+    fun getFavoriteDish(): Boolean {
         return isFavorite
     }
-
-
-
 }

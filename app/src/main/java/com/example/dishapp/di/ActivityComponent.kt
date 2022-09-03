@@ -5,7 +5,6 @@ import com.example.dishapp.views.activities.MainActivity
 import com.example.dishapp.views.fragments.AllDishesFragment
 import com.example.dishapp.views.fragments.FavoriteDishFragment
 import com.example.dishapp.views.fragments.RandomDishFragment
-import dagger.Component
 import dagger.Subcomponent
 
 @ActivityScope
@@ -13,8 +12,8 @@ import dagger.Subcomponent
 interface ActivityComponent {
 
     @Subcomponent.Factory
-    interface Factory{
-        fun create():ActivityComponent
+    interface Factory {
+        fun create(): ActivityComponent
     }
 
     fun inject(addActivity: AddActivity)
@@ -22,7 +21,5 @@ interface ActivityComponent {
     fun inject(randomDishFragment: RandomDishFragment)
     fun inject(favoriteDishFragment: FavoriteDishFragment)
     fun inject(allDishesFragment: AllDishesFragment)
-
-
 
 }

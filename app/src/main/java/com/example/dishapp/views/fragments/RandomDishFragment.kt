@@ -267,9 +267,7 @@ class RandomDishFragment : Fragment(), InternetAvailability.InternetListener {
                     requireActivity(), R.drawable.ic_favorite
                 )
             )
-        }
-        else
-        {
+        } else {
             binding.ivFavorite.setImageDrawable(
                 ContextCompat.getDrawable(
                     requireActivity(), R.drawable.ic_favorite_with_line
